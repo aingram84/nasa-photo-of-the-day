@@ -3,8 +3,21 @@ import "../App.css";
 import ImageHandler from "./ImageHandler";
 import { fetchNasaData } from "../Call";
 import axios from "axios";
+import styled from "styled-components";
 
+const PageBodyDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    button {
+        margin-top: 1%;
+        width: 30%;
+        height: 50px;
+        border: 2mm ridge #99D9D9;
+    }
+`
 
 export const PageBody = props => {
     const [apodPic, setApodPic] = useState(null);
@@ -24,10 +37,10 @@ export const PageBody = props => {
 
     }, []);
     return (
-        <div>
-            <button onClick={fetchNasaData}>APOD Data</button>
+        <PageBodyDiv>
+            <button onClick={fetchNasaData}>Fetch Image</button>
             {apodPic && <ImageHandler photo={apodPic} />}
-        </div>
+        </PageBodyDiv>
     );
 }
 
